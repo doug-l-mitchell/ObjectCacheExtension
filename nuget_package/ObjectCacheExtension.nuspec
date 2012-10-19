@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ObjectCacheExtension</id>
+    <version>1.0.0.0</version>
+    <title>ObjectCacheExtensions</title>
+    <authors>Doug Mitchell</authors>
+    <owners>Doug Mitchell</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Runtime.Caching"/>
+      <frameworkAssembly assemblyName="System.Configuration"/>
+    </frameworkAssemblies>    
+  </metadata>
+  <files>
+    <file src="app.config.transform" target="content"/>
+    <file src="web.config.transform" target="content"/>
+    <file src="..\ObjectCacheExtension\bin\Release\ObjectCacheExtension.dll" target="lib"/>
+  </files>
+</package>
