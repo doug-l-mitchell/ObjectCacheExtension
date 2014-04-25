@@ -43,3 +43,6 @@ CacheItemPolicy Configuration
 -----------------------------
 
 Specifying cache eviction policies can be declared in the configuraiton file. You can let the extension choose the default policy, pass a policy in code, or specify a configured policy by name.
+
+This is available on [NuGet](https://www.nuget.org/packages/ObjectCacheExtension/1.0.0.1)
+------------------------------------------------------------------------------------------
