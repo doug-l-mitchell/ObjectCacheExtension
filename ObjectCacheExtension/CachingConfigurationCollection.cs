@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 
 namespace ObjectCacheExtension
 {
     public class CachingConfigurationCollection : ConfigurationElementCollection
     {
-
-        private static PolicyConfigurationElement defaultWhenNothingIsDefined = 
-            new PolicyConfigurationElement{ Name="_internalDefault", IsDefault= true, Type = CachePolicyType.Sliding, Lifetime = 30};
+        private static PolicyConfigurationElement defaultWhenNothingIsDefined = new PolicyConfigurationElement
+        {
+            Name=  "_internalDefault",
+            IsDefault = true, 
+            Type = CachePolicyType.Sliding, 
+            Lifetime = 30
+        };
 
         public PolicyConfigurationElement Default
         {
@@ -19,11 +20,11 @@ namespace ObjectCacheExtension
                 PolicyConfigurationElement first = null;
                 foreach (var k in BaseGetAllKeys())
                 {
-                    PolicyConfigurationElement p = BaseGet(k) as PolicyConfigurationElement;
+                    PolicyConfigurationElement p = (PolicyConfigurationElement)BaseGet(k);
                     if (first == null)
                         first = p;
 
-                    if (p.IsDefault)
+                    if (p != null && p.IsDefault)
                         return p;
                 }
 
@@ -41,17 +42,13 @@ namespace ObjectCacheExtension
             return ((PolicyConfigurationElement)element).Name;
         }
 
-        new public PolicyConfigurationElement this[string Name]
+        new public PolicyConfigurationElement this[string name]
         {
             get
             {
-                var policy = (PolicyConfigurationElement)BaseGet(Name);
-
-                // Let the user know why they're getting a runtime error
-                if(policy == null) 
-                    throw new ArgumentException(string.Format("'{0}' is not defined as a caching policy in configuration", Name));
-
-                return policy;
+                var policy = (PolicyConfigurationElement)BaseGet(name);
+                // returning default if an element by name wasn't found
+                return policy ?? Default;
             }
         }
 
