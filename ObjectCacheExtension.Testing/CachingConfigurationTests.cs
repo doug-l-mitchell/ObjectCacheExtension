@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Runtime.Caching;
-using System.Text;
+
 using NUnit.Framework;
-using ObjectCacheExtension;
 
 namespace ObjectCacheExtension.Testing
 {
@@ -15,11 +11,10 @@ namespace ObjectCacheExtension.Testing
         public class Collection
         {
             [Test]
-            [ExpectedException(typeof(ArgumentException))]
-            public void ShouldThrowArgumentExceptionWhenPolicyNameNotDefined()
+            public void ShouldReturnDefaultWhenPolicyNameNotDefined()
             { 
                 var policy = CachingConfig.Policies["MyCachingPolicy"];
-                Assert.Fail("Expected ArgumentException");
+                Assert.AreEqual(policy, CachingConfig.Policies.Default);
             }
 
             [Test]

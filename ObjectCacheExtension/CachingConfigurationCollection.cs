@@ -1,4 +1,3 @@
-using System;
 using System.Configuration;
 
 namespace ObjectCacheExtension
@@ -13,23 +12,27 @@ namespace ObjectCacheExtension
             Lifetime = 30
         };
 
+        private static PolicyConfigurationElement defaultElement;
+
         public PolicyConfigurationElement Default
         {
-            get
+            get { return defaultElement ?? (defaultElement = GetDefault()); }
+        }
+
+        private PolicyConfigurationElement GetDefault()
+        {
+            PolicyConfigurationElement first = null;
+            foreach (var k in BaseGetAllKeys())
             {
-                PolicyConfigurationElement first = null;
-                foreach (var k in BaseGetAllKeys())
-                {
-                    PolicyConfigurationElement p = (PolicyConfigurationElement)BaseGet(k);
-                    if (first == null)
-                        first = p;
+                PolicyConfigurationElement p = (PolicyConfigurationElement)BaseGet(k);
+                if (first == null)
+                    first = p;
 
-                    if (p != null && p.IsDefault)
-                        return p;
-                }
-
-                return first ?? defaultWhenNothingIsDefined;
+                if (p != null && p.IsDefault)
+                    return p;
             }
+
+            return first ?? defaultWhenNothingIsDefined;
         }
 
         protected override ConfigurationElement CreateNewElement()
@@ -51,6 +54,5 @@ namespace ObjectCacheExtension
                 return policy ?? Default;
             }
         }
-
     }    
 }
