@@ -2,12 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>ObjectCacheExtension</id>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <title>ObjectCacheExtensions</title>
     <authors>Doug Mitchell</authors>
     <owners>Doug Mitchell</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An easier way to work with ObjectCache</description>
+    <projectUrl>https://github.com/doug-l-mitchell/ObjectCacheExtension</projectUrl>
     <tags>ObjectCache MemoryCache</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System.Runtime.Caching"/>
