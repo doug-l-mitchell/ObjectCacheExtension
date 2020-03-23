@@ -18,7 +18,7 @@ namespace ObjectCacheExtension.Testing
         {
             private ObjectCache _cache;
 
-            [TestFixtureSetUp]
+            [OneTimeSetUp]
             public void Init()
             {
                 _cache = MemoryCache.Default;
