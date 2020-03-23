@@ -53,7 +53,10 @@ namespace ObjectCacheExtension
                     if (objVal == null)
                     {
                         objVal = fallbackFunction.Invoke();
-                        cacheProvider.Set(cacheKey, objVal, policy);
+
+                        // Do not cache nulls
+                        if (objVal != null)
+                            cacheProvider.Set(cacheKey, objVal, policy);
                     }
                 }
             }

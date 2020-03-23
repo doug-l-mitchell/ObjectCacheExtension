@@ -85,6 +85,20 @@ namespace ObjectCacheExtension.Testing
                 var secondResult = _cache.AddOrGetExisting<TestData>("testData2", () => { throw new Exception("I shouldn't have been called"); }, "sixHours");
                 Assert.AreSame(firstResult, secondResult);
             }
+
+            [Test]
+            public void ShouldNotCacheWhenResultIsNull()
+            {
+                var key = "testNull";
+
+                var result = _cache.AddOrGetExisting<TestData>(key, () => null);
+
+                Assert.IsNull(result);
+
+                result = _cache.AddOrGetExisting<TestData>(key, () => TestDataFactory.GetData());
+
+                Assert.IsNotNull(result);
+            }
         }
     }
 }
