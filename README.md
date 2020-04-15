@@ -1,6 +1,9 @@
 ObjectCacheExtension
 ====================
 
+[![NuGet Badge](https://buildstats.info/nuget/ObjectCacheExtension)](https://www.nuget.org/packages/ObjectCacheExtension/) [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.0-red.svg)](#) [![.NET Standard](https://img.shields.io/badge/.NET%20Standard-%3E%3D%202.0-red.svg)](#)
+
+
 Wrap data retrieval method calls with caching as easy as this:
 
 ```csharp
