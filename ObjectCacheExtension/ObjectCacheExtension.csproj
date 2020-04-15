@@ -11,6 +11,7 @@
     <Description>An easier way to work with ObjectCache</Description>
     <PackageProjectUrl>https://github.com/doug-l-mitchell/ObjectCacheExtension</PackageProjectUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
