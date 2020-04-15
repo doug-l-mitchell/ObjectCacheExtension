@@ -31,4 +31,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <!-- NUnit needs the configuration files like this for netcoreapp2.0 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <None Update="testhost.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
