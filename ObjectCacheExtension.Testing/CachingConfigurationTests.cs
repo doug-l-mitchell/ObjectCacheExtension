@@ -56,7 +56,7 @@ namespace ObjectCacheExtension.Testing
                 var policy = pce.Policy;
 
                 Assert.AreEqual(13, policy.SlidingExpiration.Minutes);
-                Assert.AreEqual(DateTime.MaxValue.ToFileTime(), policy.AbsoluteExpiration.ToFileTime());
+                Assert.AreEqual(ObjectCache.InfiniteAbsoluteExpiration.ToFileTime(), policy.AbsoluteExpiration.ToFileTime());
             }
 
             [Test]
